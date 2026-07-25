@@ -1,32 +1,38 @@
-# 👕 AI-Based Garment Production Time Prediction System
+# 🧵 ML-Based Garment Sewing Time Predictor
 
-An end-to-end Machine Learning application that predicts the total sewing time required for garment production based on garment type, order quantity, and stitch operations. The project includes model training, prediction pipeline, and a Flask-based web interface for real-time predictions.
+An end-to-end **Machine Learning** application that predicts garment sewing time based on garment type, order quantity, and the number of stitch operations. The project uses a **Random Forest Regressor** for accurate predictions and is deployed as an interactive web application using **Streamlit**.
+
+---
+
+## 🚀 Live Demo
+
+🌐 **Live Application**
+
+https://mohit01112-ml-based-garment-sewing-time-predictor-9jcisyzk6c3t.streamlit.app/
+
+💻 **GitHub Repository**
+
+https://github.com/Mohit01112/Mohit01112-ML-Based-Garment-Sewing-Time-Predictor
 
 ---
 
 ## 📌 Project Overview
 
-Garment manufacturing industries require accurate production time estimation for effective planning and scheduling. This project leverages Machine Learning to estimate the total sewing time for a production order, helping optimize resource allocation and improve production efficiency.
+In garment manufacturing, accurately estimating sewing time is essential for production planning, resource allocation, and delivery scheduling. Manual estimation is often time-consuming and inconsistent.
 
-Users can enter:
-- Garment Type
-- Order Quantity
-- Number of Stitch Operations
-
-The application predicts the estimated sewing time in minutes.
+This project leverages Machine Learning to automate sewing time prediction, enabling manufacturers to estimate production time quickly and efficiently.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- Machine Learning based prediction
-- Random Forest Regression Model
-- Interactive Flask Web Application
-- Real-time predictions
-- User-friendly interface
-- Model saved using Joblib
-- Label Encoding for categorical features
-- Easy deployment
+- 🧵 Predict garment sewing time instantly
+- 🤖 Machine Learning model using Random Forest Regression
+- 📊 Interactive Streamlit web application
+- ⚡ Fast and accurate predictions
+- 📦 Pre-trained model using Joblib
+- 🎯 User-friendly interface
+- 🚀 Ready for cloud deployment
 
 ---
 
@@ -39,46 +45,36 @@ The application predicts the estimated sewing time in minutes.
 - Scikit-learn
 - Random Forest Regressor
 
-### Data Processing
+### Libraries
 - Pandas
 - NumPy
-
-### Backend
-- Flask
-
-### Frontend
-- HTML
-- CSS
-- JavaScript
-
-### Model Persistence
 - Joblib
+
+### Web Framework
+- Streamlit
+
+### Development Tools
+- Git
+- GitHub
 
 ---
 
 ## 📂 Project Structure
 
 ```
-Garment-Time-Prediction/
+ML-Based-Garment-Sewing-Time-Predictor/
 │
+├── app.py                     # Streamlit Application
 ├── artifacts/
-│   ├── model.pkl
-│   └── encoder.pkl
-├──src
-│   └── predict.py
+│   ├── model.pkl              # Trained Random Forest Model
+│   └── encoder.pkl            # Label Encoder
 │
-├── static/
-│   ├── style.css
-│   └── script.js
+├── src/
+│   └── predict.py             # Prediction Pipeline
 │
-├── templates/
-│   └── index.html
-│
-├── app.py
-├── predict.py
 ├── requirements.txt
 ├── README.md
-└── dataset.csv
+└── .gitignore
 ```
 
 ---
@@ -88,86 +84,115 @@ Garment-Time-Prediction/
 | Feature | Description |
 |----------|-------------|
 | Garment Type | Type of garment |
-| Order Quantity | Total production quantity |
-| Stitch Operations | Number of stitching operations |
+| Order Quantity | Total garments in the order |
+| Number of Stitch Operations | Number of stitching operations required |
 
-### Target Variable
+---
 
-- Total Sewing Time (Minutes)
+## 🎯 Output
+
+**Predicted Sewing Time (Minutes)**
+
+Example:
+
+```
+Garment Type: Shirt
+Order Quantity: 500
+Stitch Operations: 25
+
+Predicted Sewing Time:
+48.37 Minutes
+```
 
 ---
 
 ## 🤖 Machine Learning Workflow
 
-1. Dataset Collection
+1. Data Collection
 2. Data Preprocessing
 3. Label Encoding
-4. Train-Test Split
+4. Feature Engineering
 5. Model Training
 6. Model Evaluation
-7. Model Serialization
-8. Flask Deployment
+7. Model Serialization using Joblib
+8. Streamlit Deployment
 
 ---
 
-## 📈 Model Used
+## 📈 Machine Learning Model
 
-### Random Forest Regressor
+**Algorithm Used**
 
-Why Random Forest?
+- Random Forest Regressor
 
-- Handles non-linear relationships
+### Why Random Forest?
+
 - High prediction accuracy
-- Less prone to overfitting
-- Robust to noisy data
-- Works well with structured datasets
-- Easy to deploy
+- Handles non-linear relationships
+- Reduces overfitting
+- Works well on tabular datasets
+- Robust against noisy data
 
 ---
 
-## 📊 Evaluation Metrics
+## 📊 Model Pipeline
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- R² Score
+```
+User Input
+      │
+      ▼
+Data Validation
+      │
+      ▼
+Label Encoding
+      │
+      ▼
+Random Forest Model
+      │
+      ▼
+Predicted Sewing Time
+      │
+      ▼
+Display Result on Streamlit
+```
 
 ---
 
-## 💻 Installation
+## ▶️ Installation
 
-Clone the repository
-
-```bash
-git clone https://github.com/yourusername/Garment-Time-Prediction.git
-```
-
-Move to project folder
+### Clone Repository
 
 ```bash
-cd Garment-Time-Prediction
+git clone https://github.com/Mohit01112/Mohit01112-ML-Based-Garment-Sewing-Time-Predictor.git
 ```
 
-Create Virtual Environment
+### Navigate to Project
+
+```bash
+cd Mohit01112-ML-Based-Garment-Sewing-Time-Predictor
+```
+
+### Create Virtual Environment
 
 ```bash
 python -m venv env
 ```
 
-Activate Environment
+### Activate Virtual Environment
 
-Windows
+#### Windows
 
 ```bash
 env\Scripts\activate
 ```
 
-Linux/Mac
+#### Linux / macOS
 
 ```bash
 source env/bin/activate
 ```
 
-Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -178,57 +203,57 @@ pip install -r requirements.txt
 ## ▶️ Run the Application
 
 ```bash
-python app.py
-```
-
-Open your browser
-
-```
-http://127.0.0.1:5000
+streamlit run app.py
 ```
 
 ---
 
-## 📝 Example Input
+## 💻 Application Workflow
 
-Garment Type
+1. Select Garment Type
+2. Enter Order Quantity
+3. Enter Number of Stitch Operations
+4. Click **Predict Sewing Time**
+5. View the predicted sewing time instantly
 
-```
-Shirt
-```
+---
 
-Order Quantity
-
-```
-1000
-```
-
-Number of Stitch Operations
+## 📷 Sample Output
 
 ```
-10
-```
+Garment Type: Jacket
 
-### Example Output
+Order Quantity: 800
 
-```
-Estimated Sewing Time
+Stitch Operations: 32
 
-1250 Minutes
+Predicted Sewing Time
+
+65.42 Minutes
 ```
 
 ---
 
-## 🎯 Future Enhancements
+## 📈 Future Enhancements
 
-- Real manufacturing dataset integration
-- User Authentication
-- Cloud Deployment
-- Production Scheduling Dashboard
-- Prediction History
-- REST API Support
 - Deep Learning Models
+- Model Comparison Dashboard
+- Batch Prediction
+- Production Cost Prediction
+- Production Delay Prediction
+- Cloud Database Integration
+- CI/CD Pipeline
 - Docker Deployment
+
+---
+
+## 📚 Libraries Used
+
+- streamlit
+- pandas
+- numpy
+- scikit-learn
+- joblib
 
 ---
 
@@ -236,10 +261,44 @@ Estimated Sewing Time
 
 **Mohit Jadhav**
 
-Artificial Intelligence & Data Science Student
+Artificial Intelligence & Data Science Engineer
+
+### Connect with Me
+
+GitHub:
+https://github.com/Mohit01112
+
+LinkedIn:
+(Add your LinkedIn profile here)
 
 ---
 
-## 📜 License
+## ⭐ Support
 
-This project is developed for educational and portfolio purposes.
+If you found this project useful,
+
+⭐ Star this repository
+
+🍴 Fork the repository
+
+📢 Share it with others
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙏 Acknowledgements
+
+- Scikit-learn
+- Streamlit
+- Pandas
+- NumPy
+- Python Community
+
+---
+
+# ⭐ If you like this project, don't forget to give it a Star!
