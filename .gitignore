@@ -34,4 +34,3 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 
-artifacts/model.pkl
