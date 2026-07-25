@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garment Production Time Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Garment Production Time Prediction</h1>
+
+        <div class="form-group">
+
+            <label>Garment Type</label>
+
+            <select id="garment_type">
+
+                <option value="">Select Garment</option>
+
+                <option value="Shirt">Shirt</option>
+                <option value="T-Shirt">T-Shirt</option>
+                <option value="Trouser">Trouser</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Kurti">Kurti</option>
+                <option value="Dress">Dress</option>
+                <option value="Hoodie">Hoodie</option>
+                <option value="Jacket">Jacket</option>
+                <option value="Blazer">Blazer</option>
+                <option value="Uniform">Uniform</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Order Quantity</label>
+
+            <input
+                type="number"
+                id="order_quantity"
+                placeholder="Enter Order Quantity">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Number of Stitch Operations</label>
+
+            <input
+                type="number"
+                id="operations"
+                placeholder="Enter Stitch Operations">
+
+        </div>
+
+        <button onclick="predictTime()">
+            Predict Sewing Time
+        </button>
+
+        <div class="result">
+
+            <h2 id="prediction"></h2>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        async function predictTime() {
+
+            const garment = document.getElementById("garment_type").value;
+            const quantity = document.getElementById("order_quantity").value;
+            const operations = document.getElementById("operations").value;
+
+            if (garment === "" || quantity === "" || operations === "") {
+
+                alert("Please fill all fields.");
+
+                return;
+            }
+
+            const response = await fetch("/predict", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    garment_type: garment,
+                    order_quantity: quantity,
+                    num_stitch_operations: operations
+
+                })
+
+            });
+
+            const data = await response.json();
+
+            document.getElementById("prediction").innerHTML =
+                "Estimated Sewing Time : <span style='color:green;'>" +
+                data.predicted_time +
+                " Minutes</span>";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
